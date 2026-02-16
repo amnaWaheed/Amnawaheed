@@ -16,7 +16,7 @@ const SkillsSection: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-24 bg-[#020617]">
+    <section id="skills" className="py-24 bg-[#020617] scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading title="Technical Skills" subtitle="My Expertise" />
         

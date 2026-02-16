@@ -3,13 +3,15 @@ import React from 'react';
 import { FileDown, MapPin, Mail } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const resumePlaceholder = "data:application/pdf;base64,JVBERi0xLjcKMSAwIG9iagogIDw8IC9UeXBlIC9DYXRhbG9nIC9QYWdlcyAyIDAgUiA+PiBlbmRvYmogMiAwIG9iagogIDw8IC9UeXBlIC9QYWdlcyAvS2lkcyBbMyAwIFJdIC9Db3VudCAxID4+IGVuZG9iaiAzIDAgb2JqCiAgPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUgODQyXSAvUmVzb3VyY2VzIDw8ID4+ID4+IGVuZG9iagp0cmFpbGVyCiAgPDwgL1Jvb3QgMSAwIFIgPj4KJSVFT0Y=";
+
   return (
-    <section id="about" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#020617]">
+    <section id="about" className="relative min-h-screen flex items-center overflow-hidden bg-[#020617] scroll-mt-24">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-500/5 rounded-full blur-[120px] -z-10 translate-x-1/4 -translate-y-1/4"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-500/5 rounded-full blur-[120px] -z-10 -translate-x-1/4 translate-y-1/4"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="flex-1 text-center lg:text-left">
             <p className="text-orange-400 font-semibold tracking-wider uppercase mb-3">Welcome to my portfolio</p>
@@ -26,13 +28,14 @@ const Hero: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-              <button 
-                className="flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-lg font-bold shadow-lg shadow-orange-900/20 hover:bg-orange-600 transition-all transform hover:-translate-y-1"
-                onClick={() => window.print()}
+              <a 
+                href={resumePlaceholder}
+                download="Amna_Waheed_Resume.pdf"
+                className="flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-lg font-bold shadow-lg shadow-orange-900/20 hover:bg-orange-600 transition-all transform hover:-translate-y-1 no-underline"
               >
                 <FileDown className="w-5 h-5" />
                 Download Resume
-              </button>
+              </a>
               <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-slate-500 mt-4 sm:mt-0 sm:ml-4">
                 <div className="flex items-center gap-1.5 hover:text-orange-300 transition-colors cursor-default">
                   <MapPin className="w-4 h-4 text-orange-400" />

@@ -7,7 +7,7 @@ import { ExternalLink, Layers } from 'lucide-react';
 
 const ProjectSection: React.FC = () => {
   return (
-    <section id="projects" className="py-24 bg-[#0f172a] text-white overflow-hidden">
+    <section id="projects" className="py-24 bg-[#0f172a] text-white overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading title="Featured Projects" subtitle="My Recent Works" />
         

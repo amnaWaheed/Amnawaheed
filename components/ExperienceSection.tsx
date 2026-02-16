@@ -7,7 +7,7 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 const ExperienceSection: React.FC = () => {
   return (
-    <section id="experience" className="py-24 bg-[#020617]">
+    <section id="experience" className="py-24 bg-[#020617] scroll-mt-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading title="Work Experience" subtitle="My Career Journey" />
         

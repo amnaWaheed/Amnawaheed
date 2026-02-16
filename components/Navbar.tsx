@@ -5,32 +5,51 @@ import { Menu, X } from 'lucide-react';
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('about');
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Simple intersection observer logic for active section
+      const sections = ['about', 'experience', 'projects', 'skills', 'contact'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top >= 0 && rect.top <= 300) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'About', href: '#about', id: 'about' },
+    { name: 'Experience', href: '#experience', id: 'experience' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
   ];
+
+  const activeStyle = "text-orange-400 font-bold border-b-2 border-orange-400 pb-1";
+  const inactiveStyle = "text-slate-300 hover:text-orange-400 font-medium transition-colors";
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-[#020617]/90 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-5'
+      scrolled ? 'bg-[#020617]/95 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-5'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex-shrink-0">
+          <a href="#about" className="flex-shrink-0">
             <span className="text-2xl font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
               AW.
             </span>
-          </div>
+          </a>
           
           {/* Desktop Nav */}
           <div className="hidden md:block">
@@ -39,7 +58,7 @@ const Navbar: React.FC = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-slate-300 hover:text-orange-400 font-medium transition-colors"
+                  className={activeSection === link.id ? activeStyle : inactiveStyle}
                 >
                   {link.name}
                 </a>
@@ -69,7 +88,9 @@ const Navbar: React.FC = () => {
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-4 rounded-md text-base font-medium text-slate-300 hover:text-orange-400 hover:bg-slate-800 border-b border-slate-800 last:border-none"
+              className={`block px-3 py-4 rounded-md text-base font-medium border-b border-slate-800 last:border-none ${
+                activeSection === link.id ? 'text-orange-400 bg-slate-800' : 'text-slate-300 hover:text-orange-400 hover:bg-slate-800'
+              }`}
             >
               {link.name}
             </a>

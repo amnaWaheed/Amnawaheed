@@ -5,7 +5,7 @@ import { Mail, Phone, Github, Linkedin, Send } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   return (
-    <section id="contact" className="py-24 bg-[#020617]">
+    <section id="contact" className="py-24 bg-[#020617] scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading title="Get In Touch" subtitle="Contact Me" />
         
