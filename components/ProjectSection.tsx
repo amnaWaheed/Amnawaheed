@@ -14,32 +14,32 @@ const ProjectSection: React.FC = () => {
         <div className="relative">
           <Slider>
             {PROJECTS.map((project) => (
-              <div key={project.id} className="p-2 sm:p-8">
-                <div className="grid lg:grid-cols-2 gap-10 items-center bg-[#020617]/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-800 p-4 sm:p-10">
-                  <div className="relative h-64 sm:h-96 rounded-2xl overflow-hidden group shadow-2xl border border-slate-800">
+              <div key={project.id} className="p-1 sm:p-4">
+                <div className="grid lg:grid-cols-2 gap-6 sm:gap-10 items-stretch bg-[#020617]/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-800 p-4 sm:p-10">
+                  <div className="relative h-48 xs:h-64 sm:h-80 lg:h-full rounded-2xl overflow-hidden group shadow-2xl border border-slate-800">
                     <img 
                       src={project.image} 
                       alt={project.name} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                      className="w-full h-full object-cover transition-transform duration-700 lg:group-hover:scale-110 opacity-90 lg:group-hover:opacity-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/80 to-transparent"></div>
                   </div>
                   
-                  <div className="flex flex-col h-full justify-center">
-                    <h4 className="text-3xl font-bold mb-4 text-white">{project.name}</h4>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                  <div className="flex flex-col h-full justify-center py-2">
+                    <h4 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-white">{project.name}</h4>
+                    <p className="text-slate-400 text-sm sm:text-base md:text-lg leading-relaxed mb-6">
                       {project.description}
                     </p>
                     
-                    <div className="mb-8">
-                      <p className="flex items-center gap-2 text-sm font-semibold text-orange-400 uppercase tracking-widest mb-4">
-                        <Layers className="w-4 h-4" /> Tech Stack
+                    <div className="mb-6">
+                      <p className="flex items-center gap-2 text-[10px] sm:text-xs font-bold text-orange-400 uppercase tracking-widest mb-3">
+                        <Layers className="w-3 h-3 sm:w-4 h-4" /> Tech Stack
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
                         {project.techStack.map((tech) => (
                           <span 
                             key={tech} 
-                            className="px-3 py-1 bg-orange-500/10 text-orange-300 rounded-lg text-xs font-medium border border-orange-500/20"
+                            className="px-2 py-0.5 sm:px-3 sm:py-1 bg-orange-500/10 text-orange-300 rounded-md text-[10px] sm:text-xs font-medium border border-orange-500/20"
                           >
                             {tech}
                           </span>
@@ -52,7 +52,7 @@ const ProjectSection: React.FC = () => {
                         href={project.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-bold transition-colors group"
+                        className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-bold transition-colors group mt-auto text-sm sm:text-base"
                       >
                         View Project
                         <ExternalLink className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -64,6 +64,11 @@ const ProjectSection: React.FC = () => {
             ))}
           </Slider>
         </div>
+        
+        {/* Swipe Hint for mobile */}
+        <p className="lg:hidden text-center text-slate-500 text-xs mt-6 animate-pulse">
+          Swipe left or right to explore more projects
+        </p>
       </div>
     </section>
   );
