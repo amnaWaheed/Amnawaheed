@@ -1,23 +1,25 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Simple intersection observer logic for active section
       const sections = ['about', 'experience', 'projects', 'skills', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top >= 0 && rect.top <= 300) {
+          // Adjust threshold for active section detection during scroll
+          if (rect.top >= -200 && rect.top <= 300) {
             setActiveSection(section);
             break;
           }
@@ -28,12 +30,22 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Sync active section with path on route change if scroll hasn't triggered yet
+  useEffect(() => {
+    const sectionFromPath = pathname.substring(1);
+    if (sectionFromPath) {
+      setActiveSection(sectionFromPath);
+    } else {
+      setActiveSection('about');
+    }
+  }, [pathname]);
+
   const navLinks = [
-    { name: 'About', href: '#about', id: 'about' },
-    { name: 'Experience', href: '#experience', id: 'experience' },
-    { name: 'Projects', href: '#projects', id: 'projects' },
-    { name: 'Skills', href: '#skills', id: 'skills' },
-    { name: 'Contact', href: '#contact', id: 'contact' },
+    { name: 'About', path: '/about', id: 'about' },
+    { name: 'Experience', path: '/experience', id: 'experience' },
+    { name: 'Projects', path: '/projects', id: 'projects' },
+    { name: 'Skills', path: '/skills', id: 'skills' },
+    { name: 'Contact', path: '/contact', id: 'contact' },
   ];
 
   const activeStyle = "text-orange-400 font-bold border-b-2 border-orange-400 pb-1";
@@ -45,23 +57,23 @@ const Navbar: React.FC = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <a href="#about" className="flex-shrink-0">
+          <Link to="/" className="flex-shrink-0">
             <span className="text-2xl font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
               AW.
             </span>
-          </a>
+          </Link>
           
           {/* Desktop Nav */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.path}
                   className={activeSection === link.id ? activeStyle : inactiveStyle}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -84,16 +96,16 @@ const Navbar: React.FC = () => {
       }`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.path}
               onClick={() => setIsOpen(false)}
               className={`block px-3 py-4 rounded-md text-base font-medium border-b border-slate-800 last:border-none ${
                 activeSection === link.id ? 'text-orange-400 bg-slate-800' : 'text-slate-300 hover:text-orange-400 hover:bg-slate-800'
               }`}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 import { Project, Experience, SkillCategory } from './types';
 
 export const EXPERIENCES: Experience[] = [
@@ -31,6 +30,54 @@ export const EXPERIENCES: Experience[] = [
 ];
 
 export const PROJECTS: Project[] = [
+  {
+    id: 'p0',
+    name: 'Livecue',
+    description: 'An innovative live video production platform designed for creators and brands to automate content distribution and manage professional-grade live streams with advanced real-time overlays.',
+    image: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&q=80&w=800',
+    techStack: ['React.js', 'Material-UI', 'GraphQL', 'Tailwind CSS', 'Ruby on Rails'],
+    link: 'https://www.livecue.io/'
+  },
+  {
+    id: 'p6',
+    name: 'CanIBuild',
+    description: 'An industry-leading construction technology application that simplifies site feasibility and planning. It allows users to instantly determine what can be built on a parcel of land using complex spatial logic.',
+    image: 'https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=800',
+    techStack: ['React.js', 'Google Maps API', 'Material UI', 'Node.js'],
+    link: 'https://canibuild.com/en-us/'
+  },
+  {
+    id: 'p7',
+    name: 'DPixelPro',
+    description: 'A high-end creative agency portfolio showcasing professional design and development services. Built with a focus on immersive UI, sleek animations, and premium branding.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+    techStack: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'TypeScript'],
+    link: 'https://dpixelpro.com/'
+  },
+  {
+    id: 'p8',
+    name: 'Criclay',
+    description: 'A comprehensive digital hub for cricket enthusiasts featuring real-time match data, social networking, and detailed statistical analysis for the global cricket community.',
+    image: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&q=80&w=800',
+    techStack: ['React.js', 'Socket.io', 'Node.js', 'MongoDB'],
+    link: 'https://www.criclay.com/'
+  },
+  {
+    id: 'p9',
+    name: 'The Hundred Balls',
+    description: 'An engaging sports platform dedicated to "The Hundred" cricket format, providing fans with unique insights, player stats, and interactive media content.',
+    image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&q=80&w=800',
+    techStack: ['Next.js', 'Tailwind CSS', 'Sanity CMS'],
+    link: 'https://www.thehundredballs.com/'
+  },
+  {
+    id: 'p10',
+    name: 'Catered Club',
+    description: 'A premium meal-kit and catering subscription platform that optimizes dietary management and meal planning through a sophisticated user dashboard and checkout system.',
+    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=800',
+    techStack: ['React.js', 'Redux', 'Stripe API', 'Express.js'],
+    link: 'https://www.cateredclub.com/'
+  },
   {
     id: 'p1',
     name: 'Keeyu (Shopify Analytics)',
@@ -80,14 +127,14 @@ export const SKILLS: SkillCategory[] = [
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Express', 'Fastify', 'Nest.js']
+    items: ['Node.js', 'Express', 'Fastify', 'Nest.js', 'Ruby on Rails']
   },
   {
     category: 'Database & Tools',
-    items: ['MongoDB', 'GraphQL', 'REST APIs', 'Azure MSAL', 'Shopify APIs', 'Git', 'Docker']
+    items: ['MongoDB', 'GraphQL', 'REST APIs', 'Azure MSAL', 'Shopify APIs', 'Git', 'Docker', 'Playwright']
   },
   {
     category: 'AI Tools',
-    items: ['Cursor', 'Windsurf', 'ChatGPT', 'Claude AI']
+    items: ['Copilot', 'Custom Copilot Agent Workflows', 'Cursor', 'Windsurf', 'ChatGPT', 'Claude AI']
   }
 ];

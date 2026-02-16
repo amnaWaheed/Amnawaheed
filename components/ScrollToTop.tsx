@@ -6,7 +6,11 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Only force scroll to top on the home route.
+    // Section-based routes are handled by smooth scrolling in App.tsx
+    if (pathname === '/') {
+      window.scrollTo(0, 0);
+    }
   }, [pathname]);
 
   return null;

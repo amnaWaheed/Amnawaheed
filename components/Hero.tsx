@@ -6,15 +6,11 @@ const Hero: React.FC = () => {
   const resumePlaceholder = "data:application/pdf;base64,JVBERi0xLjcKMSAwIG9iagogIDw8IC9UeXBlIC9DYXRhbG9nIC9QYWdlcyAyIDAgUiA+PiBlbmRvYmogMiAwIG9iagogIDw8IC9UeXBlIC9QYWdlcyAvS2lkcyBbMyAwIFJdIC9Db3VudCAxID4+IGVuZG9iaiAzIDAgb2JqCiAgPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUgODQyXSAvUmVzb3VyY2VzIDw8ID4+ID4+IGVuZG9iagp0cmFpbGVyCiAgPDwgL1Jvb3QgMSAwIFIgPj4KJSVFT0Y=";
 
   return (
-    <section id="about" className="relative min-h-screen flex items-center overflow-hidden bg-[#020617] scroll-mt-24">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-500/5 rounded-full blur-[120px] -z-10 translate-x-1/4 -translate-y-1/4"></div>
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-500/5 rounded-full blur-[120px] -z-10 -translate-x-1/4 translate-y-1/4"></div>
-      
+    <section id="about" className="relative min-h-screen flex items-center overflow-hidden scroll-mt-24 transition-colors duration-1000">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="flex-1 text-center lg:text-left">
-            <p className="text-orange-400 font-semibold tracking-wider uppercase mb-3">Welcome to my portfolio</p>
+            <p className="text-orange-400 font-semibold tracking-wider uppercase mb-3 animate-pulse">Welcome to my portfolio</p>
             <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
               I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-500">Amna Waheed</span>
             </h1>
@@ -31,18 +27,18 @@ const Hero: React.FC = () => {
               <a 
                 href={resumePlaceholder}
                 download="Amna_Waheed_Resume.pdf"
-                className="flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-lg font-bold shadow-lg shadow-orange-900/20 hover:bg-orange-600 transition-all transform hover:-translate-y-1 no-underline"
+                className="flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-lg font-bold shadow-lg shadow-orange-900/20 hover:bg-orange-600 transition-all transform hover:-translate-y-1 no-underline active:scale-95"
               >
                 <FileDown className="w-5 h-5" />
                 Download Resume
               </a>
               <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-slate-500 mt-4 sm:mt-0 sm:ml-4">
-                <div className="flex items-center gap-1.5 hover:text-orange-300 transition-colors cursor-default">
-                  <MapPin className="w-4 h-4 text-orange-400" />
+                <div className="flex items-center gap-1.5 hover:text-orange-300 transition-colors cursor-default group">
+                  <MapPin className="w-4 h-4 text-orange-400 group-hover:scale-125 transition-transform" />
                   <span className="text-sm font-medium">Lahore, PK</span>
                 </div>
-                <div className="flex items-center gap-1.5 hover:text-orange-300 transition-colors cursor-default">
-                  <Mail className="w-4 h-4 text-orange-400" />
+                <div className="flex items-center gap-1.5 hover:text-orange-300 transition-colors cursor-default group">
+                  <Mail className="w-4 h-4 text-orange-400 group-hover:scale-125 transition-transform" />
                   <span className="text-sm font-medium">amnawaheed445@gmail.com</span>
                 </div>
               </div>
@@ -50,7 +46,7 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="flex-1 relative">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-800 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-800 transform rotate-3 hover:rotate-0 transition-all duration-700 animate-float-img">
               <img 
                 src="https://picsum.photos/id/1011/600/600" 
                 alt="Amna Waheed" 
@@ -58,7 +54,7 @@ const Hero: React.FC = () => {
               />
             </div>
             {/* Experience Badge */}
-            <div className="absolute -bottom-6 -right-2 md:right-10 bg-[#0f172a] p-4 md:p-6 rounded-2xl shadow-xl border border-slate-800 animate-bounce-slow">
+            <div className="absolute -bottom-6 -right-2 md:right-10 bg-[#0f172a]/80 backdrop-blur-md p-4 md:p-6 rounded-2xl shadow-xl border border-slate-800 animate-bounce-slow">
               <p className="text-3xl md:text-4xl font-bold text-orange-400">4+</p>
               <p className="text-xs md:text-sm text-slate-400 font-medium uppercase tracking-tighter">Years Experience</p>
             </div>
@@ -67,6 +63,14 @@ const Hero: React.FC = () => {
       </div>
       
       <style>{`
+        @keyframes float-img {
+          0% { transform: translateY(0) rotate(3deg); }
+          50% { transform: translateY(-15px) rotate(1deg); }
+          100% { transform: translateY(0) rotate(3deg); }
+        }
+        .animate-float-img {
+          animation: float-img 6s ease-in-out infinite;
+        }
         @keyframes bounce-slow {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
